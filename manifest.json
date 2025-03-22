@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "Focus Pilot",
+    "description": "A focus assistant browser extension with Pomodoro, countdowns, and notes.",
+    "version": "1.0",
+    "author": "Riyasat",
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": "icons/icon128.png"
+    },
+    "permissions": ["storage"],
+    "icons": {
+      "128": "icons/icon128.png"
+    }
+  }
