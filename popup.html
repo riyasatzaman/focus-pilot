@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Focus Pilot</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body style="width: 400px; height: 500px;" class="bg-gray-100 text-gray-900 font-sans p-4">
+
+  <!-- Navigation Tabs -->
+  <div class="flex justify-around border-b pb-2">
+    <button id="tab-focus" class="tab-button text-blue-600 font-semibold">Focus</button>
+    <button id="tab-countdown" class="tab-button font-semibold">Countdown</button>
+    <button id="tab-notes" class="tab-button font-semibold">Notes</button>
+  </div>
+
+  <!-- Tab Content -->
+  <div id="focus-tab" class="tab-content flex flex-col gap-4">
+
+    <!-- 🎯 Task List View -->
+    <div id="task-view" class="flex flex-col gap-4">
+      <h2 class="text-lg font-bold">Focus Mode</h2>
+
+      <!-- Task Input -->
+      <form id="task-form" class="flex gap-2">
+        <input
+          type="text"
+          id="task-input"
+          class="flex-1 border border-gray-300 rounded px-2 py-1"
+          placeholder="Enter a task..."
+          required
+        />
+        <button
+          type="submit"
+          class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+        >
+          Add
+        </button>
+      </form>
+
+      <!-- Task List -->
+      <ul id="task-list" class="space-y-2 text-sm"></ul>
+    </div>
+
+    <!-- ⏱️ Pomodoro Timer View -->
+    <div id="timer-view" class="hidden flex flex-col items-center gap-4">
+      <h2 id="active-task-name" class="text-lg font-bold"></h2>
+      <div class="text-3xl font-bold" id="timer-display">25:00</div>
+      <div class="flex gap-2">
+        <button id="start-btn" class="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700">Start</button>
+        <button id="pause-btn" class="bg-yellow-500 text-white px-4 py-1 rounded hover:bg-yellow-600 hidden">Pause</button>
+        <button id="reset-btn" class="bg-gray-400 text-white px-4 py-1 rounded hover:bg-gray-500">Reset</button>
+      </div>
+      <button id="back-btn" class="text-blue-600 underline text-sm">← Back to tasks</button>
+    </div>
+
+  </div>
+
+  <!-- Countdown Tab -->
+  <div id="countdown-tab" class="tab-content hidden flex-1">
+    <h2 class="text-lg font-bold mb-2">Countdowns</h2>
+    <p class="text-sm text-gray-600">Create deadlines and track time left or since.</p>
+  </div>
+
+  <!-- Notes Tab -->
+  <div id="notes-tab" class="tab-content hidden flex-1">
+    <h2 class="text-lg font-bold mb-2">Quick Notes</h2>
+    <p class="text-sm text-gray-600">Write and edit quick notes here.</p>
+  </div>
+
+  <!-- Floating Icons -->
+<!-- 🔔 Notification Icon (Bottom Left) -->
+<div class="fixed bottom-2 left-2 z-50">
+  <button id="notification-icon" title="Notifications" class="text-gray-600 hover:text-blue-600 text-xl">🔔</button>
+</div>
+
+<!-- ⚙️ Settings Icon (Bottom Right) -->
+<div class="fixed bottom-2 right-2 z-50">
+  <button id="settings-icon" title="Settings" class="text-gray-600 hover:text-blue-600 text-xl">⚙️</button>
+</div>
+
+<!-- 🔔 Notification Panel -->
+<div id="notification-panel" class="hidden fixed bottom-12 left-2 w-64 bg-white border border-gray-300 shadow-md rounded-md text-sm p-2 space-y-1 max-h-60 overflow-y-auto z-50">
+  <div class="text-gray-500 text-xs text-center">No notifications yet</div>
+</div>
+
+<!-- ⚙️ Settings Panel -->
+<div id="settings-panel" class="hidden fixed bottom-12 right-2 w-72 bg-white border border-gray-300 shadow-md rounded-md text-sm p-4 z-50">
+  <h3 class="font-semibold mb-2 text-base">Pomodoro Settings</h3>
+  <div class="mb-2">
+    <label for="focus-duration" class="block text-sm mb-1">Focus duration (minutes):</label>
+    <input id="focus-duration" type="number" min="1" max="60" class="w-full border border-gray-300 rounded px-2 py-1" />
+  </div>
+  <div class="mb-3">
+    <label for="break-duration" class="block text-sm mb-1">Break duration (minutes):</label>
+    <input id="break-duration" type="number" min="1" max="30" class="w-full border border-gray-300 rounded px-2 py-1" />
+  </div>
+  <button id="save-settings" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">Save</button>
+</div>
+
+  <script src="popup.js"></script>
+  <script src="js/focus.js"></script>
+</body>
+</html>
